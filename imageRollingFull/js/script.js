@@ -2,14 +2,19 @@ var timer = null,
     index = 0,
     pics = document.getElementsByTagName("li"),
     left = document.querySelector('.left'),
-    right = document.querySelector('.right');
+    right = document.querySelector('.right'),
+    downBox = document.querySelector('.downBox'),
+    downGroup = downBox.children;
+
+downBox.onclick = function(e) {
+    index = e.target.id;
+    changeImg();
+}
 
 left.onclick = function() {
-    if (index === 0) {
+    if (index == 0) {
         index = pics.length-1;
         changeImg();
-        // pics[index].style.display = 'none';
-        // pics[index=pics.length-1].style.display = 'block';
     } else {
         --index;
         changeImg();
@@ -17,7 +22,7 @@ left.onclick = function() {
 }
 
 right.onclick = function() {
-    if (index === pics.length -1) {
+    if (index == pics.length -1) {
         index = 0;
         changeImg();
     } else {
@@ -40,7 +45,7 @@ function slideImg() {
 function startAutoPlay(){
     timer = setInterval(function(){
         index++;
-        if(index === pics.length){
+        if(index == pics.length){
             index = 0;
         }
         changeImg();
@@ -56,7 +61,9 @@ function stopAutoPlay(){
 function changeImg(){
     for(var i=0;i<pics.length;i++){
         pics[i].style.display = "none";
+        downGroup[i].style.backgroundColor = "rgba(255, 255, 255, 0.623)";
     }
     pics[index].style.display = "block";
+    downGroup[index].style.backgroundColor = "white";
 }
 slideImg();
