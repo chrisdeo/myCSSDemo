@@ -20,7 +20,7 @@ function startAutoPlay(){
             index = 0;
         }
         changeImg();
-    },1000);
+    },1500);
 }
 //暂停播放
 function stopAutoPlay(){
